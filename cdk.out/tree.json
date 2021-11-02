@@ -1,0 +1,189 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Construct",
+          "version": "1.121.0"
+        }
+      },
+      "AwsCdkSampleStack": {
+        "id": "AwsCdkSampleStack",
+        "path": "AwsCdkSampleStack",
+        "children": {
+          "AwsCdkSampleQueue": {
+            "id": "AwsCdkSampleQueue",
+            "path": "AwsCdkSampleStack/AwsCdkSampleQueue",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "AwsCdkSampleStack/AwsCdkSampleQueue/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::SQS::Queue",
+                  "aws:cdk:cloudformation:props": {
+                    "visibilityTimeout": 300
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-sqs.CfnQueue",
+                  "version": "1.121.0"
+                }
+              },
+              "Policy": {
+                "id": "Policy",
+                "path": "AwsCdkSampleStack/AwsCdkSampleQueue/Policy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "AwsCdkSampleStack/AwsCdkSampleQueue/Policy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SQS::QueuePolicy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sqs:SendMessage",
+                              "Condition": {
+                                "ArnEquals": {
+                                  "aws:SourceArn": {
+                                    "Ref": "AwsCdkSampleTopic36368A1D"
+                                  }
+                                }
+                              },
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "sns.amazonaws.com"
+                              },
+                              "Resource": {
+                                "Fn::GetAtt": [
+                                  "AwsCdkSampleQueue3319DA32",
+                                  "Arn"
+                                ]
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "queues": [
+                          {
+                            "Ref": "AwsCdkSampleQueue3319DA32"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-sqs.CfnQueuePolicy",
+                      "version": "1.121.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-sqs.QueuePolicy",
+                  "version": "1.121.0"
+                }
+              },
+              "AwsCdkSampleStackAwsCdkSampleTopic8B4C5280": {
+                "id": "AwsCdkSampleStackAwsCdkSampleTopic8B4C5280",
+                "path": "AwsCdkSampleStack/AwsCdkSampleQueue/AwsCdkSampleStackAwsCdkSampleTopic8B4C5280",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "AwsCdkSampleStack/AwsCdkSampleQueue/AwsCdkSampleStackAwsCdkSampleTopic8B4C5280/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SNS::Subscription",
+                      "aws:cdk:cloudformation:props": {
+                        "protocol": "sqs",
+                        "topicArn": {
+                          "Ref": "AwsCdkSampleTopic36368A1D"
+                        },
+                        "endpoint": {
+                          "Fn::GetAtt": [
+                            "AwsCdkSampleQueue3319DA32",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-sns.CfnSubscription",
+                      "version": "1.121.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-sns.Subscription",
+                  "version": "1.121.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-sqs.Queue",
+              "version": "1.121.0"
+            }
+          },
+          "AwsCdkSampleTopic": {
+            "id": "AwsCdkSampleTopic",
+            "path": "AwsCdkSampleStack/AwsCdkSampleTopic",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "AwsCdkSampleStack/AwsCdkSampleTopic/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::SNS::Topic",
+                  "aws:cdk:cloudformation:props": {}
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-sns.CfnTopic",
+                  "version": "1.121.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-sns.Topic",
+              "version": "1.121.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "AwsCdkSampleStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "AwsCdkSampleStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnResource",
+                  "version": "1.121.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "AwsCdkSampleStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnCondition",
+                  "version": "1.121.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.121.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Stack",
+          "version": "1.121.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "@aws-cdk/core.App",
+      "version": "1.121.0"
+    }
+  }
+}

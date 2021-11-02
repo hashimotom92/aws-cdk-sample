@@ -1,0 +1,172 @@
+{
+  "version": "13.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "AwsCdkSampleStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "AwsCdkSampleStack.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/AwsCdkSampleStack/AwsCdkSampleQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AwsCdkSampleQueue3319DA32",
+            "trace": [
+              "new Queue (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/aws-sqs/lib/queue.ts:178:19)",
+              "new AwsCdkSampleStack (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/lib/aws-cdk-sample-stack.ts:10:19)",
+              "Object.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/bin/aws-cdk-sample.ts:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:868:30)",
+              "Module.m._compile (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:879:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:731:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:644:12)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:931:10)",
+              "main (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:868:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:879:10)",
+              "Module.load (internal/modules/cjs/loader.js:731:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:644:12)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:931:10)",
+              "/Users/hashimotomaki/.nodebrew/node/v12.8.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/AwsCdkSampleStack/AwsCdkSampleQueue/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AwsCdkSampleQueuePolicy20B2700A",
+            "trace": [
+              "new QueuePolicy (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/aws-sqs/lib/policy.ts:21:5)",
+              "Queue.addToResourcePolicy (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/aws-sqs/lib/queue-base.ts:65:21)",
+              "SqsSubscription.bind (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/aws-sns-subscriptions/lib/sqs.ts:33:16)",
+              "Topic.addSubscription (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/aws-sns/lib/topic-base.ts:44:45)",
+              "new AwsCdkSampleStack (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/lib/aws-cdk-sample-stack.ts:16:11)",
+              "Object.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/bin/aws-cdk-sample.ts:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:868:30)",
+              "Module.m._compile (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:879:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:731:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:644:12)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:931:10)",
+              "main (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:868:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:879:10)",
+              "Module.load (internal/modules/cjs/loader.js:731:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:644:12)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:931:10)",
+              "/Users/hashimotomaki/.nodebrew/node/v12.8.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/AwsCdkSampleStack/AwsCdkSampleQueue/AwsCdkSampleStackAwsCdkSampleTopic8B4C5280/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AwsCdkSampleQueueAwsCdkSampleStackAwsCdkSampleTopic8B4C52809C76C662",
+            "trace": [
+              "new Subscription (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/aws-sns/lib/subscription.ts:70:5)",
+              "Topic.addSubscription (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/aws-sns/lib/topic-base.ts:58:5)",
+              "new AwsCdkSampleStack (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/lib/aws-cdk-sample-stack.ts:16:11)",
+              "Object.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/bin/aws-cdk-sample.ts:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:868:30)",
+              "Module.m._compile (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:879:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:731:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:644:12)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:931:10)",
+              "main (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:868:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:879:10)",
+              "Module.load (internal/modules/cjs/loader.js:731:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:644:12)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:931:10)",
+              "/Users/hashimotomaki/.nodebrew/node/v12.8.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/AwsCdkSampleStack/AwsCdkSampleTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AwsCdkSampleTopic36368A1D",
+            "trace": [
+              "new Topic (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/aws-sns/lib/topic.ts:66:22)",
+              "new AwsCdkSampleStack (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/lib/aws-cdk-sample-stack.ts:14:19)",
+              "Object.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/bin/aws-cdk-sample.ts:6:1)",
+              "Module._compile (internal/modules/cjs/loader.js:868:30)",
+              "Module.m._compile (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:879:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:731:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:644:12)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:931:10)",
+              "main (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:868:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:879:10)",
+              "Module.load (internal/modules/cjs/loader.js:731:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:644:12)",
+              "Function.Module.runMain (internal/modules/cjs/loader.js:931:10)",
+              "/Users/hashimotomaki/.nodebrew/node/v12.8.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/AwsCdkSampleStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+              "/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:291:20)",
+              "process.emit (events.js:203:13)",
+              "process.EventEmitter.emit (domain.js:476:20)",
+              "process.emit (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/source-map-support/source-map-support.js:516:21)",
+              "process.topLevelDomainCallback (domain.js:131:23)"
+            ]
+          }
+        ],
+        "/AwsCdkSampleStack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:31:27)",
+              "/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/stage.ts:94:23)",
+              "process.<anonymous> (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/@aws-cdk/core/lib/app.ts:64:45)",
+              "Object.onceWrapper (events.js:291:20)",
+              "process.emit (events.js:203:13)",
+              "process.EventEmitter.emit (domain.js:476:20)",
+              "process.emit (/Users/hashimotomaki/Documents/Work/aws-cdk-sample/node_modules/source-map-support/source-map-support.js:516:21)",
+              "process.topLevelDomainCallback (domain.js:131:23)"
+            ]
+          }
+        ]
+      },
+      "displayName": "AwsCdkSampleStack"
+    }
+  }
+}
