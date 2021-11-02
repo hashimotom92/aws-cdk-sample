@@ -1,18 +1,23 @@
-import * as sns from '@aws-cdk/aws-sns';
-import * as subs from '@aws-cdk/aws-sns-subscriptions';
-import * as sqs from '@aws-cdk/aws-sqs';
 import * as cdk from '@aws-cdk/core';
+import {
+  DefaultInstanceTenancy,
+  RouterType,
+  Vpc,
+  Subnet,
+  CfnInternetGateway,
+  CfnVPCGatewayAttachment
+} from "@aws-cdk/aws-ec2"
 
 export class NetworkStack extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+  constructor(scope: cdk.App, id: string, appName: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const queue = new sqs.Queue(this, 'AwsCdkSampleQueue', {
-      visibilityTimeout: cdk.Duration.seconds(300)
-    });
-
-    const topic = new sns.Topic(this, 'AwsCdkSampleTopic');
-
-    topic.addSubscription(new subs.SqsSubscription(queue));
+    const vpc = new Vpc(this, `${appName}-vpc`, {
+      cidr: "10.0.0.0/16",
+      defaultInstanceTenancy: DefaultInstanceTenancy.DEFAULT,
+      enableDnsSupport: true,
+      enableDnsHostnames: true,
+      subnetConfiguration: []
+    })
   }
 }

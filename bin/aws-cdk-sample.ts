@@ -5,4 +5,4 @@ import { NetworkStack } from '../lib/network-stack';
 const appName = 'sample';
 
 const app = new cdk.App();
-new NetworkStack(app, `${appName}-NetworkStack`);
+new NetworkStack(app, `${appName}-NetworkStack`, appName);
