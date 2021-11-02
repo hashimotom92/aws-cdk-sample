@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import * as cdk from '@aws-cdk/core';
-import { AwsCdkSampleStack } from '../lib/aws-cdk-sample-stack';
+import { NetworkStack } from '../lib/network-stack';
+
+const appName = 'sample';
 
 const app = new cdk.App();
-new AwsCdkSampleStack(app, 'AwsCdkSampleStack');
+new NetworkStack(app, `${appName}-NetworkStack`);
