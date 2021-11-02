@@ -19,5 +19,53 @@ export class NetworkStack extends cdk.Stack {
       enableDnsHostnames: true,
       subnetConfiguration: []
     })
+
+    // ingress
+    new Subnet(this, `${appName}-subnet-pulic-ingress-1a`, {
+      availabilityZone: "ap-northeast-1a",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.0.0/24"
+    })
+    new Subnet(this, `${appName}-subnet-pulic-ingress-1c`, {
+      availabilityZone: "ap-northeast-1c",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.1.0/24"
+    })
+
+    // application
+    new Subnet(this, `${appName}-subnet-private-container-1a`, {
+      availabilityZone: "ap-northeast-1a",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.8.0/24"
+    })
+    new Subnet(this, `${appName}-subnet-private-container-1c`, {
+      availabilityZone: "ap-northeast-1c",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.9.0/24"
+    })
+
+    // db
+    new Subnet(this, `${appName}-subnet-private-db-1a`, {
+      availabilityZone: "ap-northeast-1a",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.16.0/24"
+    })
+    new Subnet(this, `${appName}-subnet-private-db-1c`, {
+      availabilityZone: "ap-northeast-1c",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.17.0/24"
+    })
+
+    // management
+    new Subnet(this, `${appName}-subnet-pulic-management-1a`, {
+      availabilityZone: "ap-northeast-1a",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.240.0/24"
+    })
+    new Subnet(this, `${appName}-subnet-pulic-management-1c`, {
+      availabilityZone: "ap-northeast-1c",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.241.0/24"
+    })
   }
 }
