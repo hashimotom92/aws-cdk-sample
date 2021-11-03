@@ -7,7 +7,11 @@ import {
   Vpc,
   CfnSubnet,
   CfnInternetGateway,
-  CfnVPCGatewayAttachment
+  CfnVPCGatewayAttachment,
+  SecurityGroup,
+  Peer,
+  Port,
+  Connections
 } from "@aws-cdk/aws-ec2"
 
 export class NetworkStack extends cdk.Stack {
@@ -129,5 +133,90 @@ export class NetworkStack extends cdk.Stack {
       routeTableId: privateDBTable.ref,
       subnetId: priSubnetDB1C.ref
     })
+
+    // Secrutiry Group
+    // External LB
+    const securityGroupIngress = new SecurityGroup(this, 'SecurityGroupIngress', {
+      vpc,
+      description: 'Security group for ingress',
+      allowAllOutbound: true
+    });
+
+    // Management
+    const securityGroupManagement = new SecurityGroup(this, 'SecurityGroupManagement', {
+      vpc,
+      description: 'Security Group of management server',
+      allowAllOutbound: true
+    });
+
+    // Backend Container
+    const securityGroupContainer = new SecurityGroup(this, 'SecurityGroupContainer', {
+      vpc,
+      description: 'Security Group of backend app',
+      allowAllOutbound: true
+    });
+
+    // Front Container
+    const securityGroupFrontContainer = new SecurityGroup(this, 'SecurityGroupFrontContainer', {
+      vpc,
+      description: 'Security Group of front container app',
+      allowAllOutbound: true
+    });
+
+    // Internal LB
+    const securityGroupInternallb = new SecurityGroup(this, 'SecurityGroupInternallb', {
+      vpc,
+      description: 'Security group for internal load balancer',
+      allowAllOutbound: true
+    });
+
+    // DB
+    const securityGroupDB = new SecurityGroup(this, 'SecurityGroupDB', {
+      vpc,
+      description: 'Security Group of database',
+      allowAllOutbound: true
+    });
+
+    // Internet -> External LB
+    securityGroupIngress.addIngressRule(Peer.anyIpv4(), Port.tcp(80), 'Allow HTTP Access')
+
+    // External LB -> Front Container
+    securityGroupFrontContainer.connections.allowFrom(
+      new Connections({
+        securityGroups: [securityGroupIngress],
+      }),
+      Port.tcp(80),
+      'allow traffic on port 80 from the external load balancer security group',
+    );
+
+    // Front Container -> Internal LB
+    // Management server -> Internal LB
+    securityGroupInternallb.connections.allowFrom(
+      new Connections({
+        securityGroups: [securityGroupFrontContainer, securityGroupManagement],
+      }),
+      Port.tcp(80),
+      'allow traffic on port 80 from the flont container and management server security group',
+    );
+
+    // Internal LB -> Back Container
+    securityGroupContainer.connections.allowFrom(
+      new Connections({
+        securityGroups: [securityGroupInternallb],
+      }),
+      Port.tcp(80),
+      'allow traffic on port 80 from the internal load balancer security group',
+    );
+
+    // Back container -> DB
+    // Front container -> DB
+    // Management server -> DB
+    securityGroupDB.connections.allowFrom(
+      new Connections({
+        securityGroups: [securityGroupContainer, securityGroupFrontContainer, securityGroupManagement],
+      }),
+      Port.tcp(3306),
+      'allow traffic on port 3306 from the container and management server security group',
+    );
   }
 }
