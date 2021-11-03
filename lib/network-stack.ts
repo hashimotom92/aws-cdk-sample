@@ -12,6 +12,7 @@ export class NetworkStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, appName: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    // vpc
     const vpc = new Vpc(this, `${appName}-vpc`, {
       cidr: "10.0.0.0/16",
       defaultInstanceTenancy: DefaultInstanceTenancy.DEFAULT,
@@ -20,7 +21,7 @@ export class NetworkStack extends cdk.Stack {
       subnetConfiguration: []
     })
 
-    // ingress
+    // ingress subnet
     new Subnet(this, `${appName}-subnet-pulic-ingress-1a`, {
       availabilityZone: "ap-northeast-1a",
       vpcId: vpc.vpcId,
@@ -32,7 +33,7 @@ export class NetworkStack extends cdk.Stack {
       cidrBlock: "10.0.1.0/24"
     })
 
-    // application
+    // application subnet
     new Subnet(this, `${appName}-subnet-private-container-1a`, {
       availabilityZone: "ap-northeast-1a",
       vpcId: vpc.vpcId,
@@ -44,7 +45,7 @@ export class NetworkStack extends cdk.Stack {
       cidrBlock: "10.0.9.0/24"
     })
 
-    // db
+    // db subnet
     new Subnet(this, `${appName}-subnet-private-db-1a`, {
       availabilityZone: "ap-northeast-1a",
       vpcId: vpc.vpcId,
@@ -56,7 +57,7 @@ export class NetworkStack extends cdk.Stack {
       cidrBlock: "10.0.17.0/24"
     })
 
-    // management
+    // management subnet
     new Subnet(this, `${appName}-subnet-pulic-management-1a`, {
       availabilityZone: "ap-northeast-1a",
       vpcId: vpc.vpcId,
@@ -66,6 +67,13 @@ export class NetworkStack extends cdk.Stack {
       availabilityZone: "ap-northeast-1c",
       vpcId: vpc.vpcId,
       cidrBlock: "10.0.241.0/24"
+    })
+
+    // IGW
+    const internetGateway = new CfnInternetGateway(this, "InternetGateway", {})
+    new CfnVPCGatewayAttachment(this, "igwAttachment", {
+      vpcId: vpc.vpcId,
+      internetGatewayId: internetGateway.ref
     })
   }
 }
