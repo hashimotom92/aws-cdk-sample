@@ -82,6 +82,18 @@ export class NetworkStack extends cdk.Stack {
       cidrBlock: "10.0.241.0/24"
     })
 
+    // Egress subnet
+    const priSubentEgress1A = new CfnSubnet(this, `${appName}-subnet-private-egress-1a`, {
+      availabilityZone: "ap-northeast-1a",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.248.0/24"
+    })
+    const priSubentEgress1C = new CfnSubnet(this, `${appName}-subnet-private-egress-1c`, {
+      availabilityZone: "ap-northeast-1c",
+      vpcId: vpc.vpcId,
+      cidrBlock: "10.0.249.0/24"
+    })
+
     // Public RouteTable
     const publicRouteTable = new CfnRouteTable(this, 'PublicRouteTable', {
       vpcId: vpc.vpcId,
