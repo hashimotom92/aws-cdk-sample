@@ -12,7 +12,14 @@ export class EcrStack extends cdk.Stack {
     // ECR
     new Repository(this, `${appName}-backend`, {
       repositoryName: `${appName}-backend`,
-      imageTagMutability: TagMutability.IMMUTABLE,
+      imageTagMutability: TagMutability.MUTABLE,
+      removalPolicy: RemovalPolicy.DESTROY,
+      imageScanOnPush: false
+    });
+
+    new Repository(this, `${appName}-frontend`, {
+      repositoryName: `${appName}-frontend`,
+      imageTagMutability: TagMutability.MUTABLE,
       removalPolicy: RemovalPolicy.DESTROY,
       imageScanOnPush: false
     });
